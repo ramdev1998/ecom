@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Product 1",
+    "description": "Product Description 1",
+    "price": "100",
+    "images": ["assets/image1.png", "assets/image2.png"],
+    "slug": "product-1"
+  },
+  {
+    "name": "Product 1",
+    "description": "Product Description 1",
+    "price": "100",
+    "images": ["assets/image1.png", "assets/image2.png"],
+    "slug": "product-1"
+  }
+]
