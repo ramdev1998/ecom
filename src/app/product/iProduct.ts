@@ -1,7 +1,9 @@
 export interface product {
+  id: number;
   name: string;
   description: string;
   price: string;
-  images: ['assets/image1.png', 'assets/image2.png'];
+  img: string
   slug: string;
+  qty?: number
 }

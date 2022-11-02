@@ -1,0 +1,50 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Qty</th>
+        <th scope="col">SubTotal</th>
+        <th scope="col">Edit\Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>
+          <img
+            style="max-width: 50px"
+            src="{{ product.img }}"
+            alt="a"
+            srcset=""
+          />
+        </td>
+        <td>{{ product?.name }}</td>
+        <td>{{ product?.price }}</td>
+        <td>
+          <button (click)="onRemoveQty(+product.id)">-</button> &nbsp;
+          {{ product?.qty }} &nbsp;
+          <button (click)="onIncrementQty(product.id)">+</button>
+        </td>
+        <td>{{ +product.price! * +product.qty! }}</td>
+        <td>
+          <span style="cursor: pointer" (click)="onEdit()">Edit</span> &nbsp;
+          <span style="cursor: pointer" (click)="onDelete(product.id)"
+            >Delete</span
+          >
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td *ngIf="getFinalTotal()">Total: {{getFinalTotal()}}</td>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

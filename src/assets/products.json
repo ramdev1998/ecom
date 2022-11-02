@@ -1,16 +1,26 @@
 [
   {
+    "id": "00",
     "name": "Product 1",
     "description": "Product Description 1",
     "price": "100",
-    "images": ["assets/image1.png", "assets/image2.png"],
+    "img": "https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80",
     "slug": "product-1"
   },
   {
-    "name": "Product 1",
+    "id": "01",
+    "name": "Product 2",
     "description": "Product Description 1",
-    "price": "100",
-    "images": ["assets/image1.png", "assets/image2.png"],
+    "price": "200",
+    "img": "https://www.junglescout.com/wp-content/uploads/2021/01/product-photo-water-bottle-hero.png",
+    "slug": "product-1"
+  },
+  {
+    "id": "02",
+    "name": "Product 3",
+    "description": "Product Description 1",
+    "price": "3000",
+    "img": "https://www.junglescout.com/wp-content/uploads/2021/01/product-photo-water-bottle-hero.png",
     "slug": "product-1"
   }
 ]

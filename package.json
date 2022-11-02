@@ -21,6 +21,7 @@
     "bootstrap": "^3.4.1",
     "jquery": "^3.6.1",
     "ngx-slick-carousel": "^0.6.0",
+    "ngx-slickjs": "^1.5.2",
     "rxjs": "~7.5.0",
     "slick-carousel": "^1.8.1",
     "tslib": "^2.3.0",
