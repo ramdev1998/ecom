@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { product } from '../iProduct';
-import { ProductService } from '../product.service';
+import { product } from 'src/app/shared/interfaces/iProduct';
+import { ProductService } from '../../shared/services/product.service';
 
 @Component({
   selector: 'app-product-item',

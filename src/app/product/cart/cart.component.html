@@ -1,50 +1,82 @@
 <div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Item</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Qty</th>
-        <th scope="col">SubTotal</th>
-        <th scope="col">Edit\Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>
-          <img
-            style="max-width: 50px"
-            src="{{ product.img }}"
-            alt="a"
-            srcset=""
-          />
-        </td>
-        <td>{{ product?.name }}</td>
-        <td>{{ product?.price }}</td>
-        <td>
-          <button (click)="onRemoveQty(+product.id)">-</button> &nbsp;
-          {{ product?.qty }} &nbsp;
-          <button (click)="onIncrementQty(product.id)">+</button>
-        </td>
-        <td>{{ +product.price! * +product.qty! }}</td>
-        <td>
-          <span style="cursor: pointer" (click)="onEdit()">Edit</span> &nbsp;
-          <span style="cursor: pointer" (click)="onDelete(product.id)"
-            >Delete</span
-          >
-        </td>
-      </tr>
+  <div *ngIf="getFinalTotal(); else noProduct">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Qty</th>
+          <th scope="col">SubTotal</th>
+          <th scope="col">Edit\Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>
+            <img
+              style="max-width: 50px"
+              src="{{ product.img }}"
+              alt="a"
+              srcset=""
+            />
+          </td>
+          <td>{{ product?.name }}</td>
+          <td>{{ product?.price }}</td>
+          <td>
+            <button (click)="onRemoveQty(+product.id)">-</button> &nbsp;
+            {{ product?.qty }} &nbsp;
+            <button (click)="onIncrementQty(product.id)">+</button>
+          </td>
+          <td>{{ +product.price! * +product.qty! }}</td>
+          <td>
+            <span style="cursor: pointer" (click)="onEdit()">Edit</span> &nbsp;
+            <span style="cursor: pointer" (click)="onDelete(product.id)"
+              >Delete</span
+            >
+          </td>
+        </tr>
 
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td *ngIf="getFinalTotal()">Total: {{getFinalTotal()}}</td>
-        <td></td>
-      </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td *ngIf="getFinalTotal()">Total: {{ getFinalTotal() }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
 
-    </tbody>
-  </table>
+    <div *ngIf="getFinalTotal()">
+      <div class="row">
+        <div class="col-md-3 pull-right">
+          <select class="form-select" (change)="onShippingChange($event)">
+            <option [value]="''">Selet Shipping Method</option>
+            <option *ngFor="let item of shippingList" [value]="item.id">
+              {{ item?.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3 pull-right pt-5" *ngIf="selectedShipping">
+          <span style="font-weight: 500"> Selected Shipping Method Is: </span
+          ><br />
+          <span style="font-weight: 600">Name: </span>{{ selectedShipping }},
+          Price: {{ selectedShippingPrice }}
+          <br />
+          <span style="font-weight: 600">Final Total Is: </span
+          >{{ +selectedShippingPrice + getFinalTotal() }}
+
+          <br><br>
+          <button class="btn btn-success">Place Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noProduct>
+    <h4 class="text-center">Your cart is Empty 😥</h4>
+  </ng-template>
 </div>

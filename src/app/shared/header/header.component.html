@@ -1,11 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/">Navbar</a>
-  <button class="navbar-toggler" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <a class="navbar-brand" routerLink="/">Shopping Book</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" routerLink="/"> Home <span class="sr-only"></span></a>
+    <div class="navbar-nav" style="margin-top: 15px;">
+      <a class="nav-item nav-link active" routerLink="/"> Products <span class="sr-only"></span></a>
       <!-- <a class="nav-item nav-link">Product <span class="sr-only"></span></a> -->
       <a class="nav-item nav-link disabled text-center" routerLink="/cart">Cart <span *ngIf="cartCount">{{ cartCount }}</span> </a>
     </div>

@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { product } from '../iProduct';
 import { Router } from '@angular/router';
-import { ProductService } from '../product.service';
+import { ProductService } from '../../shared/services/product.service';
 import { Subscription } from 'rxjs';
 import { Slick } from 'ngx-slickjs';
+import { product } from 'src/app/shared/interfaces/iProduct';
 
 @Component({
   selector: 'app-product-list',
@@ -36,7 +36,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   // slider
   config: Slick.Config = {
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 2,
     slidesToScroll: 2,
     dots: true,
     autoplay: true,

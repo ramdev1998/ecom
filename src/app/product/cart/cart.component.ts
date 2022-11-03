@@ -1,6 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { product } from '../iProduct';
-import { ProductService } from '../product.service';
+import { product } from 'src/app/shared/interfaces/iProduct';
+import { ProductService } from '../../shared/services/product.service';
+
+export interface Ishipping {
+  id: number;
+  name: string;
+  price: string;
+}
 
 @Component({
   selector: 'app-cart',
@@ -9,12 +16,17 @@ import { ProductService } from '../product.service';
 })
 export class CartComponent implements OnInit {
   products: product[] = [];
+  isOpen = false
+  shippingList!: Ishipping [];
+  selectedShipping!: string;
+  selectedShippingPrice!: string;
 
-  constructor(private producSvc: ProductService) { }
+  constructor(private producSvc: ProductService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.producSvc.loadCartData();
     this.loadData();
+    this.fetchShippingMethod();
     this.producSvc.updateProductEmit.subscribe(res => {
       this.loadData()
     })
@@ -51,6 +63,25 @@ export class CartComponent implements OnInit {
     return this.products.reduce((acc, item) => {
       return acc += +item.qty! * +item.price
     }, 0)
+  }
+
+  fetchShippingMethod() {
+    this.producSvc.fetchShippingMethod().subscribe(res => {
+      this.shippingList = res;      
+    })
+  }
+
+  onShippingChange(event: any) {
+    if(event.target.value) {
+      this.selectedShipping = this.shippingList[+event.target.value].name;
+      this.selectedShippingPrice = this.shippingList[+event.target.value].price;
+    } else {
+      this.selectedShipping = '';
+      this.selectedShippingPrice = '';
+    }
+
+    console.log(this.selectedShipping,
+      this.selectedShippingPrice)
   }
 
 }
