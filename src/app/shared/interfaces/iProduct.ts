@@ -5,5 +5,6 @@ export interface product {
   price: string;
   img: string
   slug: string;
-  qty?: number
+  qty?: number;
+  edit?: boolean
 }

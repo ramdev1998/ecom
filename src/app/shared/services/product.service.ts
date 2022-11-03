@@ -34,7 +34,7 @@ export class ProductService {
   }
 
   loadCartData() {
-    this.cartProductList = this.getCart();
+    this.cartProductList = this.getCart() || [];
     setTimeout(() => {
       this.cartItemCount.next(this.cartProductList.length);
     }, 0);
@@ -77,7 +77,7 @@ export class ProductService {
     this.updateProductEmit.next();
   }
 
-  setItemsIntoCarts(product: any) {
+  setItemsIntoCarts(product: product) {
     const productExistInCart = this.cartProductList.find(
       ({ id }) => +id === +product.id
     );

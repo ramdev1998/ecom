@@ -1,6 +1,6 @@
 [
   {
-    "id": "00",
+    "id": 0,
     "name": "Product 1",
     "description": "Product Description 1",
     "price": "100",
@@ -8,7 +8,7 @@
     "slug": "product-1"
   },
   {
-    "id": "01",
+    "id": 1,
     "name": "Product 2",
     "description": "Product Description 1",
     "price": "200",
@@ -16,7 +16,7 @@
     "slug": "product-1"
   },
   {
-    "id": "02",
+    "id": 2,
     "name": "Product 3",
     "description": "Product Description 1",
     "price": "3000",

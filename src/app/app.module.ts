@@ -9,6 +9,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { ProductItemComponent } from './product/product-item/product-item.component';
 import { CartComponent } from './product/cart/cart.component';
 import { NgxSlickJsModule } from 'ngx-slickjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { NgxSlickJsModule } from 'ngx-slickjs';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     NgxSlickJsModule.forRoot({
       links: {
         slickJs:

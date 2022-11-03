@@ -21,16 +21,43 @@
               srcset=""
             />
           </td>
-          <td>{{ product?.name }}</td>
+          <td>
+            <ng-container
+              *ngIf="!products[product.id]?.edit; else nameInputTpl"
+            >
+              {{ product.name }}
+            </ng-container>
+            <ng-template #nameInputTpl>
+              <input
+                type="text"
+                nz-input
+                [(ngModel)]="products[product.id].name"
+              />
+            </ng-template>
+          </td>
           <td>{{ product?.price }}</td>
           <td>
-            <button (click)="onRemoveQty(+product.id)">-</button> &nbsp;
+            <button class="cartBtn" (click)="onRemoveQty(+product.id)">-</button> &nbsp;
             {{ product?.qty }} &nbsp;
-            <button (click)="onIncrementQty(product.id)">+</button>
+            <button class="cartBtn" (click)="onIncrementQty(product.id)">+</button>
           </td>
           <td>{{ +product.price! * +product.qty! }}</td>
           <td>
-            <span style="cursor: pointer" (click)="onEdit()">Edit</span> &nbsp;
+            <!-- <span style="cursor: pointer" (click)="startEdit(product.id)"
+              >Edit</span
+            > -->
+            <ng-container
+              *ngIf="!products[product.id]?.edit; else saveBtn"
+            >
+              <span style="cursor: pointer" (click)="startEdit(product.id)"
+              >Edit</span
+            >
+            </ng-container>
+            <ng-template #saveBtn>
+              <button (click)="onSave(product.id, product)">Save</button>
+            </ng-template>
+
+            &nbsp;
             <span style="cursor: pointer" (click)="onDelete(product.id)"
               >Delete</span
             >
@@ -70,7 +97,7 @@
           <span style="font-weight: 600">Final Total Is: </span
           >{{ +selectedShippingPrice + getFinalTotal() }}
 
-          <br><br>
+          <br /><br />
           <button class="btn btn-success">Place Order</button>
         </div>
       </div>
